@@ -1,0 +1,40 @@
+#!/usr/bin/python3
+import pygame;
+import os;
+
+pygame.font.init();
+screen = pygame.display.set_mode([340,190]);
+clear = "\033[H\033[2J";
+welcome = "Welcome to \033[32mYaicaOS\033[0m";
+print(clear+welcome);
+username = input("Enter username: ");
+password = input("Enter password: ");
+print(f"Welcome {username}");
+while True:
+    com = input("> ").split();
+    if (not com):
+        pass;
+    elif (com[0] == "help"):
+        f = open("src/h1.page").read();
+        print(f);
+    elif (com[0] == "echo"):
+        print(' '.join(com[1:]));
+    elif (com[0] == "cls"):
+        print(clear, end="\r");
+    elif (com[0] == "render"):
+        screen.fill(0);
+        font = pygame.font.Font("src/ttyfont.ttf", 16);
+        jc = ' '.join(com[1:])
+        render = font.render(jc, False, (170,170,170));
+        screen.blit(render, (0,0));
+        pygame.display.flip();
+    elif (com[0] == "scls"):
+        screen.fill(0);
+        pygame.display.flip();
+    elif (com[0] == "yafetch"):
+        f = open("src/yafetch.page").read();
+        print(f);
+    elif (com[0] == "exit"):
+        exit();
+    else:
+        print("Bad command.");

@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+from sys import argv;
+import os;
+
+argc = len(argv);
+if argc == 1:
+    print("Usage: ./make-os <filename> - create os with named name");
+if argc == 2:
+    print("Creating OS");
+    src = open("src/src_os").read();
+    with open(argv[1], "w") as f:
+        f;
+    with open(argv[1], "a") as fw:
+        fw.write(src);
+    os.system(f"chmod 775 {argv[1]}");
+    print("Successfully created OS!");

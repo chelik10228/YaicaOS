@@ -1,0 +1,8 @@
+YaicOS Help Page 1/1:
+   help - show help page
+   echo <text> - print text
+   cls - clear terminal
+   render <text> - display text in screen
+   scls - clear screen
+   yafetch - information of system
+   exit - exit from yaicos
