@@ -5,4 +5,6 @@ YaicOS Help Page 1/1:
    render <text> - display text in screen
    scls - clear screen
    yafetch - information of system
+   ls - show all files
+   cd - change directory
    exit - exit from yaicos

@@ -1,16 +1,22 @@
 #!/usr/bin/python3
 from sys import argv;
 import os;
+import shutil;
 
 argc = len(argv);
 if argc == 1:
     print("Usage: ./make-os <filename> - create os with named name");
 if argc == 2:
     print("Creating OS");
+    disk = input("Enter name of disk: ");
+    os.makedirs(f"yaicafs/{disk}");
+    shutil.copy("src/h1.page", f"yaicafs/{disk}/");
+    shutil.copy("src/ttyfont.ttf", f"yaicafs/{disk}/");
+    shutil.copy("src/yafetch.page", f"yaicafs/{disk}/");
     src = open("src/src_os").read();
     with open(argv[1], "w") as f:
         f;
     with open(argv[1], "a") as fw:
         fw.write(src);
     os.system(f"chmod 775 {argv[1]}");
-    print("Successfully created OS!");
+    print("Successfully created OS");

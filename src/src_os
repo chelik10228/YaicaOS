@@ -1,12 +1,17 @@
 #!/usr/bin/python3
 import pygame;
 import os;
+import random;
+import time;
+from yaicadisplay import screen;
 
+disk = input("Enter disk: ");
+os.chdir(f"yaicafs/{disk}");
 pygame.font.init();
-screen = pygame.display.set_mode([340,190]);
 clear = "\033[H\033[2J";
 welcome = "Welcome to \033[32mYaicaOS\033[0m";
 print(clear+welcome);
+print("Loaded ysh");
 username = input("Enter username: ");
 password = input("Enter password: ");
 print(f"Welcome {username}");
@@ -15,7 +20,7 @@ while True:
     if (not com):
         pass;
     elif (com[0] == "help"):
-        f = open("src/h1.page").read();
+        f = open("h1.page").read();
         print(f);
     elif (com[0] == "echo"):
         print(' '.join(com[1:]));
@@ -23,8 +28,8 @@ while True:
         print(clear, end="\r");
     elif (com[0] == "render"):
         screen.fill(0);
-        font = pygame.font.Font("src/ttyfont.ttf", 16);
-        jc = ' '.join(com[1:])
+        font = pygame.font.Font("ttyfont.ttf", 16);
+        jc = ' '.join(com[1:]);
         render = font.render(jc, False, (170,170,170));
         screen.blit(render, (0,0));
         pygame.display.flip();
@@ -32,8 +37,12 @@ while True:
         screen.fill(0);
         pygame.display.flip();
     elif (com[0] == "yafetch"):
-        f = open("src/yafetch.page").read();
+        f = open("yafetch.page").read();
         print(f);
+    elif (com[0] == "ls"):
+        os.system("dir");
+    elif (com[0] == "cd"):
+        os.chdir(''.join(com[1:]));
     elif (com[0] == "exit"):
         exit();
     else:

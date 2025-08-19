@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+import shutil;
+from sys import argv;
+
+argc = len(argv);
+if argc == 1:
+    print("Usage: ./uyaicafs <file> - load file to fs");
+if argc == 2:
+    disk = input("Enter name of disk: ");
+    shutil.move(argv[1], f"yaicafs/{disk}");
